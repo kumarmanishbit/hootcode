@@ -10,7 +10,11 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.charset.Charset;
-
+import java.util.Calendar;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Set;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -19,28 +23,36 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
+public class Crawler implements Runnable {
 
-public class Crawler {
+	private String uri;
 
-	public static void main(String[] args) {
+	public Crawler(String uri) {
+		this.uri = uri;
+	}
 
+	public String getUri() {
+		return uri;
+	}
 
+	public void setUri(String uri) {
+		this.uri = uri;
+	}
+
+	public void run() {
 
 		try {
-			sendGet();
-
-		} catch (Exception e1) {
+			System.out.println(this.uri);
+			sendGet(this.uri);
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			e.printStackTrace();
 		}
-
-
-
 
 	}
 
-	public static String callURL(String myURL) {
-		System.out.println("Requeted URL:" + myURL);
+	public static synchronized String callURL(String myURL) {
+		
 		StringBuilder sb = new StringBuilder();
 		URLConnection urlConn = null;
 		InputStreamReader in = null;
@@ -68,14 +80,15 @@ public class Crawler {
 		return sb.toString();
 	}
 
-	private static void sendGet() throws Exception {
+	private static synchronized void sendGet(String uri) throws Exception {
 
-		String url = "http://mail-archives.apache.org/mod_mbox/maven-users/201412.mbox/ajax/thread?0";
+		String url = uri + ".mbox/ajax/thread?0";
+
+		// http://mail-archives.apache.org/mod_mbox/maven-users/201408
 
 		URL obj = new URL(url);
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
-		// optional default is GET
 		con.setRequestMethod("GET");
 
 		int responseCode = con.getResponseCode();
@@ -91,10 +104,6 @@ public class Crawler {
 		}
 		in.close();
 
-		// print result
-		//System.out.println(response.toString());
-
-		// Parsing started here
 
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		DocumentBuilder db = dbf.newDocumentBuilder();
@@ -104,40 +113,21 @@ public class Crawler {
 		org.w3c.dom.Document doc = db.parse(is);
 		NodeList nodes = doc.getElementsByTagName("message");
 
-		// iterate the employees
+		
 		for (int i = 0; i < nodes.getLength(); i++) {
 			Element element = (Element) nodes.item(i);
 
 			System.out.println("Id: " + element.getAttribute("id"));
-System.out.println("calling ........");
-			getFullMessage(element.getAttribute("id"));
+			// System.out.println("calling ........");
+			getFullMessage(uri,element.getAttribute("id"));
 
-			/*
-			 * NodeList name = element.getElementsByTagName("from"); Element
-			 * line = (Element) name.item(0); System.out.println("Name: " +
-			 * line.getTextContent());
-			 * 
-			 * NodeList date = element.getElementsByTagName("date");
-			 * 
-			 * line = (Element) date.item(0);
-			 * 
-			 * System.out.println("Date: " + line.getTextContent());
-			 * 
-			 * NodeList subject = element.getElementsByTagName("date");
-			 * 
-			 * line = (Element) subject.item(0);
-			 * 
-			 * System.out.println("Subject: " + line.getTextContent());
-			 * 
-			 * System.out.println("====================");
-			 */
 		}
 
 	}
 
-	private static void getFullMessage(String id) throws Exception {
+	private static synchronized void getFullMessage(String uri,String id) throws Exception {
 
-		String url = "http://mail-archives.apache.org/mod_mbox/maven-users/201412.mbox/ajax/" + id;
+		String url = uri+".mbox/ajax/" + id;
 
 		URL obj = new URL(url);
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -158,9 +148,6 @@ System.out.println("calling ........");
 		}
 		in.close();
 
-		// print result
-	//	System.out.println(response.toString());
-
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		DocumentBuilder db = dbf.newDocumentBuilder();
 		InputSource is = new InputSource();
@@ -169,54 +156,48 @@ System.out.println("calling ........");
 		org.w3c.dom.Document doc = db.parse(is);
 		NodeList nodes = doc.getElementsByTagName("mail");
 
-		File file = new File("mail.txt");
+		File file = new File("mail"+".txt");
 		if (!file.exists()) {
 			file.createNewFile();
 		}
-		
-		FileWriter fw = new FileWriter(file.getAbsoluteFile(),true);
+
+		FileWriter fw = new FileWriter(file.getAbsoluteFile(), true);
 		BufferedWriter bw = new BufferedWriter(fw);
-	
-	
+
 		// iterate the mail
-		System.out.println("length of mail is "+nodes.getLength());
-		
+		System.out.println("length of mail is " + nodes.getLength());
+
 		for (int i = 0; i < nodes.getLength(); i++) {
 			Element element = (Element) nodes.item(i);
 
 			System.out.println("Id: " + element.getAttribute("id"));
-			
-		
 
 			NodeList name = element.getElementsByTagName("from");
 			Element line = (Element) name.item(0);
-			System.out.println("Name: " + line.getTextContent());
-			bw.write("Name  :- "+line.getTextContent()+"\n");
-			
+			// System.out.println("Name: " + line.getTextContent());
+			bw.write("Name  :- " + line.getTextContent() + "\n");
 
 			NodeList subject = element.getElementsByTagName("subject");
 
 			line = (Element) subject.item(0);
 
-			System.out.println("Subject: " + line.getTextContent());
+			// System.out.println("Subject: " + line.getTextContent());
 
-			bw.write("Subject  :-"+line.getTextContent()+"\n");
-			
+			bw.write("Subject  :-" + line.getTextContent() + "\n");
+
 			NodeList content = element.getElementsByTagName("contents");
 
 			line = (Element) content.item(0);
 
-			System.out.println("contents:- " + line.getTextContent());
+			// System.out.println("contents:- " + line.getTextContent());
 
-			
-			bw.write("contents:- " +line.getTextContent()+"\n\n");
+			bw.write("contents:- " + line.getTextContent() + "\n\n");
 			bw.write("================\n\n");
-			
-			System.out.println("====================\n\n");
+
+			// System.out.println("====================\n\n");
 
 		}
 		bw.close();
 	}
 
 }
-

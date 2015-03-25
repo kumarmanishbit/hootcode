@@ -5,3 +5,9 @@
   <version>1.0.1-SNAPSHOT</version>
 </project>
 
+<archive>
+    <manifest>
+      <mainClass>src/main/java/com/main/</mainClass>
+    </manifest>
+ </archive>
+
