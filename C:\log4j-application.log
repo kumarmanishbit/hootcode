@@ -1,0 +1,185 @@
+2015-03-26 10:48:48 INFO  Crawler:46 - Thread has been started
+2015-03-26 10:48:48 INFO  Crawler:46 - Thread has been started
+2015-03-26 10:48:48 INFO  Crawler:46 - Thread has been started
+2015-03-26 10:48:48 INFO  Crawler:46 - Thread has been started
+2015-03-26 10:48:48 INFO  Crawler:46 - Thread has been started
+2015-03-26 10:48:48 INFO  Crawler:46 - Thread has been started
+2015-03-26 10:48:48 INFO  Crawler:46 - Thread has been started
+2015-03-26 10:48:48 INFO  Crawler:46 - Thread has been started
+2015-03-26 10:48:48 INFO  Crawler:46 - Thread has been started
+2015-03-26 10:48:48 INFO  Crawler:46 - Thread has been started
+2015-03-26 10:48:48 INFO  Crawler:46 - Thread has been started
+2015-03-26 10:48:48 INFO  Crawler:46 - Thread has been started
+2015-03-26 11:42:34 INFO  Test:23 - Adding all the url to queue
+2015-03-26 11:42:34 INFO  Crawler:46 - Thread has been started
+2015-03-26 11:42:34 INFO  Crawler:46 - Thread has been started
+2015-03-26 11:42:34 INFO  Crawler:46 - Thread has been started
+2015-03-26 11:42:34 INFO  Crawler:46 - Thread has been started
+2015-03-26 11:42:34 INFO  Crawler:46 - Thread has been started
+2015-03-26 11:42:34 INFO  Crawler:46 - Thread has been started
+2015-03-26 11:42:34 INFO  Crawler:46 - Thread has been started
+2015-03-26 11:42:34 INFO  Crawler:46 - Thread has been started
+2015-03-26 11:42:34 INFO  Crawler:46 - Thread has been started
+2015-03-26 11:42:34 INFO  Crawler:46 - Thread has been started
+2015-03-26 11:42:34 INFO  Crawler:46 - Thread has been started
+2015-03-26 11:42:34 INFO  Crawler:46 - Thread has been started
+2015-03-26 12:10:15 INFO  Test:23 - Adding all the url to queue
+2015-03-26 12:10:16 INFO  Crawler:46 - Thread has been started
+2015-03-26 12:10:16 INFO  Crawler:46 - Thread has been started
+2015-03-26 12:10:16 INFO  Crawler:46 - Thread has been started
+2015-03-26 12:10:16 INFO  Crawler:46 - Thread has been started
+2015-03-26 12:10:16 INFO  Crawler:46 - Thread has been started
+2015-03-26 12:10:16 INFO  Crawler:46 - Thread has been started
+2015-03-26 12:10:16 INFO  Crawler:46 - Thread has been started
+2015-03-26 12:10:16 INFO  Crawler:46 - Thread has been started
+2015-03-26 12:10:16 INFO  Crawler:46 - Thread has been started
+2015-03-26 12:10:16 INFO  Crawler:46 - Thread has been started
+2015-03-26 12:10:16 INFO  Crawler:46 - Thread has been started
+2015-03-26 12:10:16 INFO  Crawler:46 - Thread has been started
+2015-03-26 12:14:24 ERROR Crawler:52 - Need to look into !
+java.io.IOException: Server returned HTTP response code: 400 for URL: http://mail-archives.apache.org/mod_mbox/maven-users/201407.mbox/ajax/<CFEEEA15.D187%stephan.klevenz@sap.com>
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at sun.net.www.protocol.http.HttpURLConnection$6.run(HttpURLConnection.java:1676)
+	at sun.net.www.protocol.http.HttpURLConnection$6.run(HttpURLConnection.java:1674)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at sun.net.www.protocol.http.HttpURLConnection.getChainedException(HttpURLConnection.java:1672)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1245)
+	at com.main.Crawler.getFullMessage(Crawler.java:151)
+	at com.main.Crawler.sendGet(Crawler.java:131)
+	at com.main.Crawler.run(Crawler.java:49)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: java.io.IOException: Server returned HTTP response code: 400 for URL: http://mail-archives.apache.org/mod_mbox/maven-users/201407.mbox/ajax/<CFEEEA15.D187%stephan.klevenz@sap.com>
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1627)
+	at java.net.HttpURLConnection.getResponseCode(HttpURLConnection.java:468)
+	at com.main.Crawler.getFullMessage(Crawler.java:147)
+	... 3 more
+2015-03-26 12:15:39 ERROR Crawler:52 - Need to look into !
+java.io.IOException: Server returned HTTP response code: 400 for URL: http://mail-archives.apache.org/mod_mbox/maven-users/201404.mbox/ajax/<CF719BC3.23809%knar@yahoo-inc.com>
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at sun.net.www.protocol.http.HttpURLConnection$6.run(HttpURLConnection.java:1676)
+	at sun.net.www.protocol.http.HttpURLConnection$6.run(HttpURLConnection.java:1674)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at sun.net.www.protocol.http.HttpURLConnection.getChainedException(HttpURLConnection.java:1672)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1245)
+	at com.main.Crawler.getFullMessage(Crawler.java:151)
+	at com.main.Crawler.sendGet(Crawler.java:131)
+	at com.main.Crawler.run(Crawler.java:49)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: java.io.IOException: Server returned HTTP response code: 400 for URL: http://mail-archives.apache.org/mod_mbox/maven-users/201404.mbox/ajax/<CF719BC3.23809%knar@yahoo-inc.com>
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1627)
+	at java.net.HttpURLConnection.getResponseCode(HttpURLConnection.java:468)
+	at com.main.Crawler.getFullMessage(Crawler.java:147)
+	... 3 more
+2015-03-26 12:15:55 ERROR Crawler:52 - Need to look into !
+java.io.IOException: Server returned HTTP response code: 400 for URL: http://mail-archives.apache.org/mod_mbox/maven-users/201403.mbox/ajax/<CF3F698F.FEB%richard.mauri@sap.com>
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at sun.net.www.protocol.http.HttpURLConnection$6.run(HttpURLConnection.java:1676)
+	at sun.net.www.protocol.http.HttpURLConnection$6.run(HttpURLConnection.java:1674)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at sun.net.www.protocol.http.HttpURLConnection.getChainedException(HttpURLConnection.java:1672)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1245)
+	at com.main.Crawler.getFullMessage(Crawler.java:151)
+	at com.main.Crawler.sendGet(Crawler.java:131)
+	at com.main.Crawler.run(Crawler.java:49)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: java.io.IOException: Server returned HTTP response code: 400 for URL: http://mail-archives.apache.org/mod_mbox/maven-users/201403.mbox/ajax/<CF3F698F.FEB%richard.mauri@sap.com>
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1627)
+	at java.net.HttpURLConnection.getResponseCode(HttpURLConnection.java:468)
+	at com.main.Crawler.getFullMessage(Crawler.java:147)
+	... 3 more
+2015-03-26 12:32:06 INFO  Test:23 - Adding all the url to queue
+2015-03-26 12:32:06 INFO  Crawler:41 - Thread has been started
+2015-03-26 12:32:06 INFO  Crawler:51 - Done
+2015-03-26 12:32:06 INFO  Crawler:41 - Thread has been started
+2015-03-26 12:32:06 INFO  Crawler:41 - Thread has been started
+2015-03-26 12:32:06 INFO  Crawler:41 - Thread has been started
+2015-03-26 12:32:06 INFO  Crawler:51 - Done
+2015-03-26 12:32:06 INFO  Crawler:41 - Thread has been started
+2015-03-26 12:32:06 INFO  Crawler:51 - Done
+2015-03-26 12:32:06 INFO  Crawler:41 - Thread has been started
+2015-03-26 12:32:06 INFO  Crawler:51 - Done
+2015-03-26 12:32:06 INFO  Crawler:41 - Thread has been started
+2015-03-26 12:32:06 INFO  Crawler:51 - Done
+2015-03-26 12:32:06 INFO  Crawler:41 - Thread has been started
+2015-03-26 12:32:06 INFO  Crawler:51 - Done
+2015-03-26 12:32:06 INFO  Crawler:51 - Done
+2015-03-26 12:32:06 INFO  Crawler:41 - Thread has been started
+2015-03-26 12:32:06 INFO  Crawler:51 - Done
+2015-03-26 12:32:06 INFO  Crawler:41 - Thread has been started
+2015-03-26 12:32:06 INFO  Crawler:51 - Done
+2015-03-26 12:32:06 INFO  Crawler:41 - Thread has been started
+2015-03-26 12:32:06 INFO  Crawler:51 - Done
+2015-03-26 12:32:06 INFO  Crawler:41 - Thread has been started
+2015-03-26 12:32:06 INFO  Crawler:51 - Done
+2015-03-26 12:32:06 INFO  Crawler:51 - Done
+2015-03-26 12:32:34 INFO  Test:23 - Adding all the url to queue
+2015-03-26 12:32:34 INFO  Crawler:41 - Thread has been started
+2015-03-26 12:32:34 INFO  Crawler:41 - Thread has been started
+2015-03-26 12:32:34 INFO  Crawler:41 - Thread has been started
+2015-03-26 12:32:34 INFO  Crawler:41 - Thread has been started
+2015-03-26 12:32:34 INFO  Crawler:41 - Thread has been started
+2015-03-26 12:32:34 INFO  Crawler:41 - Thread has been started
+2015-03-26 12:32:34 INFO  Crawler:41 - Thread has been started
+2015-03-26 12:32:34 INFO  Crawler:41 - Thread has been started
+2015-03-26 12:32:34 INFO  Crawler:41 - Thread has been started
+2015-03-26 12:32:34 INFO  Crawler:41 - Thread has been started
+2015-03-26 12:32:34 INFO  Crawler:41 - Thread has been started
+2015-03-26 12:32:34 INFO  Crawler:41 - Thread has been started
+2015-03-26 12:32:52 INFO  Test:23 - Adding all the url to queue
+2015-03-26 12:32:52 INFO  Crawler:41 - Thread has been started
+2015-03-26 12:32:52 INFO  Crawler:41 - Thread has been started
+2015-03-26 12:32:52 INFO  Crawler:41 - Thread has been started
+2015-03-26 12:32:52 INFO  Crawler:41 - Thread has been started
+2015-03-26 12:32:52 INFO  Crawler:41 - Thread has been started
+2015-03-26 12:32:52 INFO  Crawler:41 - Thread has been started
+2015-03-26 12:32:52 INFO  Crawler:41 - Thread has been started
+2015-03-26 12:32:52 INFO  Crawler:41 - Thread has been started
+2015-03-26 12:32:52 INFO  Crawler:41 - Thread has been started
+2015-03-26 12:32:52 INFO  Crawler:41 - Thread has been started
+2015-03-26 12:32:52 INFO  Crawler:41 - Thread has been started
+2015-03-26 12:32:52 INFO  Crawler:41 - Thread has been started
+2015-03-26 12:33:05 INFO  Test:23 - Adding all the url to queue
+2015-03-26 12:33:05 INFO  Crawler:41 - Thread has been started
+2015-03-26 12:33:05 INFO  Crawler:41 - Thread has been started
+2015-03-26 12:33:05 INFO  Crawler:41 - Thread has been started
+2015-03-26 12:33:05 INFO  Crawler:41 - Thread has been started
+2015-03-26 12:33:05 INFO  Crawler:41 - Thread has been started
+2015-03-26 12:33:05 INFO  Crawler:41 - Thread has been started
+2015-03-26 12:33:05 INFO  Crawler:41 - Thread has been started
+2015-03-26 12:33:05 INFO  Crawler:41 - Thread has been started
+2015-03-26 12:33:05 INFO  Crawler:41 - Thread has been started
+2015-03-26 12:33:05 INFO  Crawler:41 - Thread has been started
+2015-03-26 12:33:05 INFO  Crawler:41 - Thread has been started
+2015-03-26 12:33:05 INFO  Crawler:41 - Thread has been started
+2015-03-26 14:26:24 INFO  Test:23 - Adding all the url to queue
+2015-03-26 14:26:24 INFO  Crawler:41 - Thread has been started
+2015-03-26 14:26:24 INFO  Crawler:41 - Thread has been started
+2015-03-26 14:26:24 INFO  Crawler:41 - Thread has been started
+2015-03-26 14:26:24 INFO  Crawler:41 - Thread has been started
+2015-03-26 14:26:24 INFO  Crawler:41 - Thread has been started
+2015-03-26 14:26:24 INFO  Crawler:41 - Thread has been started
+2015-03-26 14:26:24 INFO  Crawler:41 - Thread has been started
+2015-03-26 14:26:24 INFO  Crawler:41 - Thread has been started
+2015-03-26 14:26:24 INFO  Crawler:41 - Thread has been started
+2015-03-26 14:26:24 INFO  Crawler:41 - Thread has been started
+2015-03-26 14:26:24 INFO  Crawler:41 - Thread has been started
+2015-03-26 14:26:24 INFO  Crawler:41 - Thread has been started
+2015-03-26 14:26:24 INFO  Crawler:100 - 
+Sending 'GET' request to URL : http://mail-archives.apache.org/mod_mbox/maven-users/201412.mbox/ajax/thread?0Response Code : 200
+2015-03-26 14:27:00 INFO  Crawler:100 - 
+Sending 'GET' request to URL : http://mail-archives.apache.org/mod_mbox/maven-users/201401.mbox/ajax/thread?0Response Code : 200
+2015-03-26 14:28:03 INFO  Crawler:100 - 
+Sending 'GET' request to URL : http://mail-archives.apache.org/mod_mbox/maven-users/201402.mbox/ajax/thread?0Response Code : 200
+2015-03-26 14:28:39 INFO  Crawler:100 - 
+Sending 'GET' request to URL : http://mail-archives.apache.org/mod_mbox/maven-users/201405.mbox/ajax/thread?0Response Code : 200
+2015-03-26 14:29:00 INFO  Crawler:100 - 
+Sending 'GET' request to URL : http://mail-archives.apache.org/mod_mbox/maven-users/201404.mbox/ajax/thread?0Response Code : 200
