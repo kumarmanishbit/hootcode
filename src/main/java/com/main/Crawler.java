@@ -17,7 +17,7 @@ import com.gargoylesoftware.htmlunit.FailingHttpStatusCodeException;
 * @version 1.0
 * @since   10-April-2015
 */
-public class Test {
+public class Crawler {
 	
 
 	// private static final Logger logger = Logger.getLogger(Crawler.class);
