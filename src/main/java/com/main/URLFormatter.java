@@ -17,6 +17,7 @@ import java.util.regex.Pattern;
 
 public class URLFormatter {
 
+	
 	public Set<String> formatURL(String content, String url) throws MalformedURLException {
 
 		Set<String> queue = new LinkedHashSet<String>();

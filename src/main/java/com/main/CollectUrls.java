@@ -6,6 +6,7 @@ import java.util.Set;
 
 import javax.xml.parsers.ParserConfigurationException;
 
+import org.apache.log4j.Logger;
 import org.xml.sax.SAXException;
 
 import com.gargoylesoftware.htmlunit.BrowserVersion;
@@ -16,8 +17,9 @@ import com.gargoylesoftware.htmlunit.SgmlPage;
 import com.gargoylesoftware.htmlunit.WebClient;
 
 /**
- * This Class is responsible to grab the data 
- * Input :- Pass the url of the corresponding page
+ * This Class is responsible to grab the data Input :- Pass the url of the
+ * corresponding page
+ * 
  * @author Manish Kumar
  * @version 1.0
  * @since 10-April-2015
@@ -25,11 +27,9 @@ import com.gargoylesoftware.htmlunit.WebClient;
 
 public class CollectUrls {
 
-	public CollectUrls() {
+	private static final Logger logger = Logger.getLogger(CollectUrls.class);
 
-	}
-
-	protected Set<String> getURl(String url) throws FailingHttpStatusCodeException, MalformedURLException, IOException,
+	public Set<String> getURl(String url) throws FailingHttpStatusCodeException, MalformedURLException, IOException,
 			InterruptedException {
 
 		@SuppressWarnings("deprecation")
@@ -44,7 +44,7 @@ public class CollectUrls {
 
 		Page page = client.getPage(url);
 
-		System.out.println("Processing : " + url);
+		logger.info("Processing : " + url);
 
 		String content = ((SgmlPage) page).asXml();
 

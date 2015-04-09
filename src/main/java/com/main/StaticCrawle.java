@@ -13,6 +13,8 @@ import java.util.HashSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.log4j.Logger;
+
 /**
  * This Class is responsible to grab the content which are not related to ajax or any javascript. 
  * @author Manish Kumar
@@ -23,6 +25,7 @@ import java.util.regex.Pattern;
 
 public class StaticCrawle {
 
+	private static final Logger logger = Logger.getLogger(StaticCrawle.class);
 	static HashSet<String> urls = new HashSet<String>();
 
 	public HashSet<String> crawle(URL url) {

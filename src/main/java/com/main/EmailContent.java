@@ -12,6 +12,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import org.apache.log4j.Logger;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
@@ -26,6 +27,7 @@ import org.xml.sax.SAXException;
 
 public class EmailContent {
 
+	private static final Logger logger = Logger.getLogger(EmailContent.class);
 	public void generateEmail(String content, String fileMonth) throws IOException, ParserConfigurationException,
 			SAXException {
 
@@ -51,6 +53,7 @@ public class EmailContent {
 		month.put("11", "Nov");
 		month.put("12", "Dec");
 
+		logger.info("Processing for the month "+month.get(fileMonth));
 		File file = new File("ajax/mail" + month.get(fileMonth) + ".txt");
 		if (!file.exists()) {
 			file.createNewFile();

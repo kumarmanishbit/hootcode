@@ -7,6 +7,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import org.apache.log4j.Logger;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
@@ -19,11 +20,12 @@ import org.xml.sax.SAXException;
 
 public class XMLFinder {
 
+	private static final Logger logger = Logger.getLogger(XMLFinder.class);
 	public  boolean chekcXml(String content) {
 
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		DocumentBuilder db;
-		String st = null;
+		String root = null;
 		org.w3c.dom.Document doc = null;
 		try {
 			db = dbf.newDocumentBuilder();
@@ -31,8 +33,9 @@ public class XMLFinder {
 			is.setCharacterStream(new StringReader(content));
 
 			doc = db.parse(is);
-			st = doc.getDocumentElement().getNodeName();
-			System.out.println("Root element " + st);
+			root = doc.getDocumentElement().getNodeName();
+			logger.info("Root Element is "+root);
+			
 		} catch (ParserConfigurationException e) {
 
 			return false;
@@ -44,7 +47,7 @@ public class XMLFinder {
 			return false;
 		}
 
-		return st == "mail";
+		return root == "mail";
 
 	}
 	

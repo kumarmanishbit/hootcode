@@ -9,6 +9,8 @@ import java.net.URLConnection;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.log4j.Logger;
+
 /**
  * This Class is responsible to check whether the page is Ajax enalbe or not
  * @author Manish Kumar
@@ -19,6 +21,7 @@ import java.util.regex.Pattern;
 
 public class AJAXFinder {
 
+	private static final Logger logger = Logger.getLogger(AJAXFinder.class);
 	public boolean checkAjax(URL url) {
 
 		try {
