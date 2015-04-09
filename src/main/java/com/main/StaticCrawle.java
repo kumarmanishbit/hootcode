@@ -13,6 +13,14 @@ import java.util.HashSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * This Class is responsible to grab the content which are not related to ajax or any javascript. 
+ * @author Manish Kumar
+ * @version 1.0
+ * @since 10-April-2015
+ */
+
+
 public class StaticCrawle {
 
 	static HashSet<String> urls = new HashSet<String>();

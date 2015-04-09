@@ -17,6 +17,13 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
+/**
+ * This Class is responsible to grab the email and save them to corresponding file (month wise).
+ * @author Manish Kumar
+ * @version 1.0
+ * @since 10-April-2015
+ */
+
 public class EmailContent {
 
 	public void generateEmail(String content, String fileMonth) throws IOException, ParserConfigurationException,

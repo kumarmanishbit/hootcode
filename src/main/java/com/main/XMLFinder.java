@@ -10,6 +10,13 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
+/**
+ * This Class is responsible to check whether the content is xml or other content.
+ * @author Manish Kumar
+ * @version 1.0
+ * @since 10-April-2015
+ */
+
 public class XMLFinder {
 
 	public  boolean chekcXml(String content) {

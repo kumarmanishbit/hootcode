@@ -9,6 +9,14 @@ import java.net.URLConnection;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * This Class is responsible to check whether the page is Ajax enalbe or not
+ * @author Manish Kumar
+ * @version 1.0
+ * @since 10-April-2015
+ */
+
+
 public class AJAXFinder {
 
 	public boolean checkAjax(URL url) {

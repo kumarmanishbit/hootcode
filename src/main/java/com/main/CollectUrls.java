@@ -2,38 +2,51 @@ package com.main;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.util.Queue;
 import java.util.Set;
-import java.util.concurrent.TimeUnit;
 
 import javax.xml.parsers.ParserConfigurationException;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.xml.sax.SAXException;
+
+import com.gargoylesoftware.htmlunit.BrowserVersion;
+import com.gargoylesoftware.htmlunit.FailingHttpStatusCodeException;
+import com.gargoylesoftware.htmlunit.NicelyResynchronizingAjaxController;
+import com.gargoylesoftware.htmlunit.Page;
+import com.gargoylesoftware.htmlunit.SgmlPage;
+import com.gargoylesoftware.htmlunit.WebClient;
+
+/**
+ * This Class is responsible to grab the data 
+ * Input :- Pass the url of the corresponding page
+ * @author Manish Kumar
+ * @version 1.0
+ * @since 10-April-2015
+ */
 
 public class CollectUrls {
 
-	private WebDriver driver;
-
 	public CollectUrls() {
-		this.driver = new FirefoxDriver();
-		this.driver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
+
 	}
 
-	protected Set<String> getURl(String url) throws MalformedURLException {
-	//	Queue<String> queue = new ConcurrentLinkedQueue<String>();
+	protected Set<String> getURl(String url) throws FailingHttpStatusCodeException, MalformedURLException, IOException,
+			InterruptedException {
 
-		if (!url.matches("(.*.)css"))
-			this.driver.get(url);
+		@SuppressWarnings("deprecation")
+		WebClient client = new WebClient(BrowserVersion.FIREFOX_17);
+		client.getOptions().setJavaScriptEnabled(true);
+		client.getOptions().setRedirectEnabled(true);
+		client.getOptions().setThrowExceptionOnScriptError(true);
+		client.getOptions().setCssEnabled(true);
+		client.getOptions().setUseInsecureSSL(true);
+		client.getOptions().setThrowExceptionOnFailingStatusCode(false);
+		client.setAjaxController(new NicelyResynchronizingAjaxController());
 
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
+		Page page = client.getPage(url);
 
-			e.printStackTrace();
-		}
-		String content = this.driver.getPageSource();
+		System.out.println("Processing : " + url);
+
+		String content = ((SgmlPage) page).asXml();
 
 		String val = url.replaceAll("\\D+", "");
 
@@ -59,7 +72,5 @@ public class CollectUrls {
 		return format.formatURL(content, url);
 
 	}
-
-
 
 }

@@ -1,55 +1,68 @@
 package com.main;
 
-import java.net.MalformedURLException;
+import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
-import java.util.Map.Entry;
 import java.util.Set;
 
+import com.gargoylesoftware.htmlunit.FailingHttpStatusCodeException;
+
+/**
+* The Crawler Entry point 
+*
+* @author  Manish Kumar
+* @version 1.0
+* @since   10-April-2015
+*/
 public class Test {
+	
 
 	// private static final Logger logger = Logger.getLogger(Crawler.class);
 
-	public static void main(String[] args) throws MalformedURLException {
+	public static void main(String[] args) throws FailingHttpStatusCodeException, IOException, InterruptedException {
 
-		// Queue<String> urls = new ConcurrentLinkedQueue<String>();
+		// Keeping all the sites to be visited in Hashset to avoid duplication 
 		Set<String> urls = new LinkedHashSet<String>();
 
-		CollectUrls cu = new CollectUrls();
+
+		CollectUrls grabUrl = new CollectUrls();
+		// for static checking use this url
+		//"http://www.tutorialspoint.com/java/java_string_matches.htm"
+		
 		String userURL = "http://mail-archives.apache.org/mod_mbox/maven-users/";
 		AJAXFinder checkPage = new AJAXFinder();
 
 		if (!checkPage.checkAjax(new URL(userURL))) {
 
-			HashSet<String> urls1 = new HashSet<String>();
+			HashSet<String> staticUrl = new HashSet<String>();
 
-			StaticCrawle sw = new StaticCrawle();
-			urls1 = sw.crawle(new URL(userURL));
+			StaticCrawle staticPages = new StaticCrawle();
+			staticUrl = staticPages.crawle(new URL(userURL));
 
 			for (Object item : new HashSet<Object>(urls)) {
 
-				urls1 = sw.crawle(new URL((String) item));
+				staticUrl = staticPages.crawle(new URL((String) item));
 			}
 
-			Iterator<String> it = urls.iterator();
+			// staticUrlList
+			Iterator<String> staticUrlList = staticUrl.iterator();
 
-			while (it.hasNext()) {
-				System.out.println(it.next());
+			while (staticUrlList.hasNext()) {
+				System.out.println(staticUrlList.next());
 
 			}
 
 		} else {
 
-			urls = cu.getURl(userURL);
+			urls = grabUrl.getURl(userURL);
 
 			System.out.println("Size of queue before processing is " + urls.size());
 			HashMap<String, Set<String>> hm = new HashMap<String, Set<String>>();
 			Set<String> linksToProcess = new LinkedHashSet<String>();
-			// Queue<String> linksToProcess = new
-			// ConcurrentLinkedQueue<String>();
+			Set<String> links = new LinkedHashSet<String>();
 			URLFilter urlFilter = new URLFilter();
 			linksToProcess = urlFilter.getMonth(urls);
 
@@ -58,30 +71,26 @@ public class Test {
 
 			System.out.println("Size of queue is " + linksToProcess.size());
 
-			Iterator<String> it1 = linksToProcess.iterator();
+			links.addAll(linksToProcess);
+			Iterator<String> startLink = linksToProcess.iterator();
 
-			while (it1.hasNext()) {
-				String element = (String) it1.next();
+			while (startLink.hasNext()) {
+				String element = (String) startLink.next();
 				System.out.println(element);
 
-				hm.put(element, cu.getURl(element));
+				links.addAll(grabUrl.getURl(element));
+				// hm.put(element, cu.getURl(element));
 			}
 
 			System.out.println("Size of Map is " + hm.size());
 
-			for (Entry<String, Set<String>> entry : hm.entrySet()) {
-				// String key = entry.getKey();
-				Iterator<String> value = entry.getValue().iterator();
-
-				String currentUrl;
-				while (value.hasNext()) {
-					currentUrl = value.next();
-
-					cu.getURl(currentUrl);
-
-				}
-
+			Iterator<String> linkToVisit = links.iterator();
+			while (linkToVisit.hasNext()) {
+				String element = (String) linkToVisit.next();
+				System.out.println(element);
+				grabUrl.getURl(element);
 			}
+
 
 		}
 

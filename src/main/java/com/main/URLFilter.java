@@ -2,25 +2,31 @@ package com.main;
 
 import java.util.Iterator;
 import java.util.LinkedHashSet;
-import java.util.Queue;
 import java.util.Set;
-import java.util.concurrent.ConcurrentLinkedQueue;
+
+/**
+ * This Class is responsible to format URL . We have to extract 2014 mail only
+ * @author Manish Kumar
+ * @version 1.0
+ * @since 10-April-2015
+ */
+
 
 public class URLFilter {
 
 	public Set<String> getMonth(Set<String> urls) {
 
 		// Iterator urlsIter
-		Iterator<String> it1 = urls.iterator();
-		String st;
+		Iterator<String> urlsIter = urls.iterator();
+		String filterUrl;
 	//	Queue<String> links = new ConcurrentLinkedQueue<String>();
 		Set<String> links = new LinkedHashSet<String>();
-		while (it1.hasNext()) {
-			st = it1.next();
+		while (urlsIter.hasNext()) {
+			filterUrl = urlsIter.next();
 
 			// System.out.println(st+" URL  "+st.matches(".*?2014.*?"));
-			if (st.matches(".*?2014.*?"))
-				links.add(st);
+			if (filterUrl.matches(".*?2014.*?"))
+				links.add(filterUrl);
 		}
 		System.out.println("Size of the queue is " + links.size());
 		return links;

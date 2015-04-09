@@ -3,6 +3,14 @@ package com.main;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 
+/**
+ * This Class is responsible to make application connection restart. 
+ * @author Manish Kumar
+ * @version 1.0
+ * @since 10-April-2015
+ */
+
+
 public class Connections {
 
 	public boolean checkConnection(HttpURLConnection conn) {
